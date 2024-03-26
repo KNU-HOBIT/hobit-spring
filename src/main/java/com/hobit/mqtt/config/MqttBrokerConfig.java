@@ -1,4 +1,4 @@
-package com.hobit.global.config;
+package com.hobit.mqtt.config;
 
 import com.hobit.mqtt.controller.MqttMessageSubscriber;
 import lombok.extern.slf4j.Slf4j;
