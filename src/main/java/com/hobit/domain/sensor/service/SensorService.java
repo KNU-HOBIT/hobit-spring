@@ -1,6 +1,7 @@
 package com.hobit.domain.sensor.service;
 
 import com.hobit.domain.sensor.dto.request.SensorSaveRequest;
+import com.hobit.domain.sensor.dto.request.SensorUpdateRequest;
 import com.hobit.domain.sensor.dto.response.SensorReadResponse;
 import com.hobit.domain.sensor.entity.Sensor;
 import com.hobit.domain.sensor.exception.SensorErrorCode;
@@ -25,6 +26,8 @@ public class SensorService {
         Sensor sensor= Sensor.builder()
                 .sensorName(request.sensorName())
                 .sensorLocation(request.sensorLocation())
+                .sensorType(request.sensorType())
+                .sensorTopic(request.sensorTopic())
                 .build();
 
         log.info("save Sensor name {}",sensor.getSensorName());
@@ -46,7 +49,7 @@ public class SensorService {
     /**
      * UPDATE
      */
-    public String updateSensor(SensorSaveRequest request,String id){
+    public String updateSensor(SensorUpdateRequest request, String id){
         Sensor sensor=sensorRepository.findById(id)
                 .orElseThrow(()-> new GlobalException(SensorErrorCode.SENSOR_NOT_FOUND));
         sensor.update(request);

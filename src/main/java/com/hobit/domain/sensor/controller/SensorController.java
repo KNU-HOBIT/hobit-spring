@@ -1,6 +1,7 @@
 package com.hobit.domain.sensor.controller;
 
 import com.hobit.domain.sensor.dto.request.SensorSaveRequest;
+import com.hobit.domain.sensor.dto.request.SensorUpdateRequest;
 import com.hobit.domain.sensor.dto.response.SensorReadResponse;
 import com.hobit.domain.sensor.entity.Sensor;
 import com.hobit.domain.sensor.repository.SensorRepository;
@@ -62,7 +63,7 @@ public class SensorController {
     @PutMapping("/{sensorId}")
     public ResponseEntity<ApiUtil.ApiSuccessResult<String>> updateSensor(
         @PathVariable("sensorId") String sensorId,
-        @RequestBody SensorSaveRequest request
+        @RequestBody SensorUpdateRequest request
     ){
         String updateSensorId=sensorService.updateSensor(request,sensorId);
 

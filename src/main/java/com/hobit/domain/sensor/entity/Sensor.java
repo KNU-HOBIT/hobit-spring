@@ -2,6 +2,7 @@ package com.hobit.domain.sensor.entity;
 
 
 import com.hobit.domain.sensor.dto.request.SensorSaveRequest;
+import com.hobit.domain.sensor.dto.request.SensorUpdateRequest;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
@@ -14,20 +15,20 @@ public class Sensor {
     private String id;
     private String sensorName;
     private String sensorLocation;
-    private String sensorValue;
     private String sensorType;
+    private String sensorTopic;
     @Builder
-    public Sensor(String id,String sensorName,String sensorLocation,String sensorValue,String sensorType){
+    public Sensor(String id,String sensorName,String sensorLocation,String sensorType,String sensorTopic){
         this.id =id;
         this.sensorName=sensorName;
         this.sensorType=sensorType;
-        this.sensorValue=sensorValue;
+        this.sensorTopic=sensorTopic;
         this.sensorLocation=sensorLocation;
     }
 
-    public void update(SensorSaveRequest request){
-        this.sensorLocation= request.sensorLocation();
+    public void update(SensorUpdateRequest request){
         this.sensorName = request.sensorName();
+        this.sensorTopic = request.sensorTopic();
     }
 
 }

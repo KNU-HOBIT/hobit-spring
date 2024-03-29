@@ -1,9 +1,7 @@
 package com.hobit.domain.sensor.dto.request;
 
-public record SensorSaveRequest(
+public record SensorUpdateRequest(
         String sensorName,
-        String sensorLocation,
-        String sensorType,
         String sensorTopic
 ) {
 }
