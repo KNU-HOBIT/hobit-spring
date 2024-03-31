@@ -16,13 +16,13 @@ import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.MessageHandler;
 
 @Configuration
-@Slf4j
-public class MqttBrokerConfig {
-    private static final String BROKER_URL = "tcp://155.230.34.51:30083";
-    private static final String BROKER_CLIENT_ID = "unique-client-id";
-    private static final String TOPIC_FILTER = "my-topic";
-    private static final String USERNAME = "admin";
-    private static final String PASSWORD = "password123";
+    @Slf4j
+    public class MqttBrokerConfig {
+        private static final String BROKER_URL = "tcp://155.230.34.51:30083";
+        private static final String BROKER_CLIENT_ID = "unique-client-id";
+        private static final String TOPIC_FILTER = "my-topic";
+        private static final String USERNAME = "admin";
+        private static final String PASSWORD = "password123";
 
 
     /*
@@ -34,17 +34,17 @@ public class MqttBrokerConfig {
     따라서, 이 클래스는 Spring Integration 라이브러리를 활용하여 MQTT 브로커에 연결하고, 특정 토픽을 구독하여 수신된 메시지를 MqttMessageSubscriber 클래스로 전달해 처리하도록 설정합니다.
     */
 
-    @Bean
-    public MqttPahoClientFactory mqttClientFactory() { // MQTT 클라이언트 관련 설정
-        var factory = new DefaultMqttPahoClientFactory();
-        var options = new MqttConnectOptions();
-        options.setServerURIs(new String[]{BROKER_URL});
-        options.setUserName(USERNAME);
-        options.setPassword(PASSWORD.toCharArray());
-        options.setAutomaticReconnect(true);
-        factory.setConnectionOptions(options);
-        return factory;
-    }
+        @Bean
+        public MqttPahoClientFactory mqttClientFactory() { // MQTT 클라이언트 관련 설정
+            var factory = new DefaultMqttPahoClientFactory();
+            var options = new MqttConnectOptions();
+            options.setServerURIs(new String[]{BROKER_URL});
+            options.setUserName(USERNAME);
+            options.setPassword(PASSWORD.toCharArray());
+            options.setAutomaticReconnect(true);
+            factory.setConnectionOptions(options);
+            return factory;
+        }
     @Bean
     public MessageProducer inboundChannel(
             MqttPahoClientFactory mqttClientFactory,
