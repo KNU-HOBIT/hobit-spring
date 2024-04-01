@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/sensor")
 @RequiredArgsConstructor
 public class SensorController {
@@ -24,19 +24,19 @@ public class SensorController {
     private final SensorRepository sensorRepository;
     private final SensorService sensorService;
 
-
     /**
      *  sensor 등록
      * @param request sensor 이름, 위치
      * @return 저장한 sensor의 id 값
      */
 
-    @PostMapping
+    @PostMapping()
     public ResponseEntity<ApiUtil.ApiSuccessResult<String>> saveSensor(
             @RequestBody SensorSaveRequest request
             ){
         String saveSensorId = sensorService.saveSensor(request);
 
+        // return ResponseEntity.ok().body(ApiUtil.success(HttpStatus.CREATED,saveSensorId));
         return ResponseEntity.ok().body(ApiUtil.success(HttpStatus.CREATED,saveSensorId));
     }
 

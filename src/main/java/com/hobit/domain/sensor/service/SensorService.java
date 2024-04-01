@@ -11,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -45,6 +47,12 @@ public class SensorService {
 
         return SensorReadResponse.toSensorDTO(sensor);
     }
+
+    public List<Sensor> ALlsensorReadResponse(String id){
+        List<Sensor> sensor=sensorRepository.findAll();
+        return sensor;
+    }
+
 
     /**
      * UPDATE

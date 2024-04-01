@@ -1,6 +1,7 @@
-package com.hobit.domain.mqtt.dynamic;
+package com.hobit.domain.mqtt.dto.request;
 
-public record MqttRequest(
-        String MqttName
+public record MqttConnectionRequest(
+
+        String MqttTopic
 ) {
 }
