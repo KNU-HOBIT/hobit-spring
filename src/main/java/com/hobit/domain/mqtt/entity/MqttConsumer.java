@@ -1,22 +1,21 @@
-package com.hobit.domain.mqtt.su;
+/*
+package com.hobit.domain.mqtt.entity;
 
 import lombok.extern.slf4j.Slf4j;
 import org.eclipse.paho.client.mqttv3.*;
-import org.springframework.beans.factory.annotation.Value;
 
 
 @Slf4j
 public class MqttConsumer implements Runnable, MqttCallback {
 
+    //@Value("${mqtt.broker-url}")
+    private String BROKER_URL = "tcp://155.230.34.51:30083";
 
-    @Value("${mqtt.broker-url}")
-    private String BROKER_URL;
+    //@Value("${mqtt.username}")
+    private String USERNAME ="admin";
 
-    @Value("${mqtt.username}")
-    private String USERNAME;
-
-    @Value("${mqtt.password}")
-    private String PASSWORD;
+    //@Value("${mqtt.password}")
+    private String PASSWORD="password123";
     private final String topic;
     private MqttClient mqttClient;
 
@@ -72,3 +71,4 @@ public class MqttConsumer implements Runnable, MqttCallback {
 
     }
 }
+*/

@@ -1,9 +1,10 @@
+/*
 package com.hobit.domain.mqtt.controller;
 
 import com.hobit.domain.mqtt.dto.request.MqttConnectionRequest;
 
 import com.hobit.domain.mqtt.service.MqttClientConsumerService;
-import com.hobit.domain.mqtt.su.MqttConsumer;
+import com.hobit.domain.mqtt.entity.MqttConsumer;
 import com.hobit.global.util.ApiUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -43,3 +44,4 @@ public class MqttDynamicController {
         return ResponseEntity.ok().body(ApiUtil.success(HttpStatus.CREATED));
     }
 }
+*/

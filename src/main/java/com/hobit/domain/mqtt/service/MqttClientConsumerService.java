@@ -1,5 +1,6 @@
+/*
 package com.hobit.domain.mqtt.service;
-import com.hobit.domain.mqtt.su.MqttConsumer;
+import com.hobit.domain.mqtt.entity.MqttConsumer;
 import org.springframework.stereotype.Service;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -12,11 +13,13 @@ public class MqttClientConsumerService {
     private static final ConcurrentHashMap<String, MqttConsumer> consumers = new ConcurrentHashMap<>();
     // ConcurrentHashMap은 Java에서 제공하는 스레드 안전한 맵(HashMap) 구현체
     // 멀티 스레드 환경에서 여러 스레드가 동시에 맵에 데이터를 추가, 수정, 삭제할 수 있을 때 사용되고, 동시성 문제를 방지하기 위한 동기화 메커니즘 제공함.
-    /**
+    */
+/**
      * create
      * @param topic
      * @return MqttConsumer
-     */
+     *//*
+
     public static MqttConsumer createConsumer(String topic) {
         MqttConsumer consumer = new MqttConsumer(topic);
         consumer.start();
@@ -25,19 +28,26 @@ public class MqttClientConsumerService {
         return consumer;
     }
 
-    /**
+    */
+/**
      * READ
-     */
+     *//*
 
 
-    /**
+
+    */
+/**
      * Update
-     */
+     *//*
 
-    /**
+
+    */
+/**
      * Delete
-     */
+     *//*
+
 
 
 
 }
+*/

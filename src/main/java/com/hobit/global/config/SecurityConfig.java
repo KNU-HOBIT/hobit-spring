@@ -37,6 +37,7 @@ public class SecurityConfig {
                                 .requestMatchers(new AntPathRequestMatcher("/v3/**")).permitAll()
                                 .requestMatchers(new AntPathRequestMatcher("/sensor")).permitAll()
                                 .requestMatchers(new AntPathRequestMatcher("/mqtt")).permitAll()
+                                .requestMatchers(new AntPathRequestMatcher("/kafka")).permitAll()
                                 .requestMatchers(new AntPathRequestMatcher("/error")).permitAll()
                                 .anyRequest().authenticated())
                         .oauth2Login(oauth2 -> oauth2
