@@ -11,19 +11,13 @@ import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 
 import java.time.Duration;
 import java.util.Collections;
+import java.util.List;
 import java.util.Properties;
 
 @Slf4j
 public class KafkaClientConsumer implements Runnable {
 
-    //@Value("${mqtt.broker-url}")
     private String BROKER_URL = "tcp://155.230.34.51:30083";
-
-    //@Value("${mqtt.username}")
-    private String USERNAME ="admin";
-
-    //@Value("${mqtt.password}")
-    private String PASSWORD="password123";
     private final String topic;
     private KafkaConsumer kafkaConsumer;
 
@@ -33,16 +27,25 @@ public class KafkaClientConsumer implements Runnable {
     public void start() {
         new Thread(this).start();  // Ensures that each consumer instance runs in its own thread
     }
+    public Thread getRunningThreads(String topic) {
+        List<Thread> allThreads = (List<Thread>) Thread.getAllStackTraces().keySet();
+        Thread topicThreads = new Thread();
+
+        for (Thread thread : allThreads) {
+            if (thread.getName().contains(topic) && thread.isAlive()) {
+                topicThreads=thread;
+                break;
+            }
+        }
+        return topicThreads;
+    }
 
     @Override
     public void run() {
 
-        //KafkaProperties kafkaProperties = new KafkaProperties();
         Properties properties = new Properties();
         properties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,BROKER_URL);
-        properties.put(ConsumerConfig.GROUP_ID_CONFIG,"my consumer group");
-        //properties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-        //properties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+        properties.put(ConsumerConfig.GROUP_ID_CONFIG,topic);
 
         properties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, org.apache.kafka.common.serialization.StringDeserializer.class);
         properties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, org.apache.kafka.common.serialization.StringDeserializer.class);
